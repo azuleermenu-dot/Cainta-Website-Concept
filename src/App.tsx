@@ -1,19 +1,9 @@
 import { useMemo, useState } from "react";
+import { categories, navigation as nav, vendors, type Vendor } from "./data";
 import type { FormEvent } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { ArrowRight, ArrowUpRight, Menu, X, Search, MapPin, Store, Users, Mail, CheckCircle2, Send, Sparkles } from "lucide-react";
 
-type Vendor = { name:string; category:string; description:string; stall:string; image:string; tag:string; products?:string[]; hours?:string; contact?:string };
-const vendors:Vendor[] = [
- {name:"Saffron Table",category:"Halal Food & Dining",description:"A welcoming demo kitchen serving comforting rice meals and freshly prepared favorites.",stall:"Demo · Stall A-01",image:"https://images.unsplash.com/photo-1547573854-74d2a71d0826?auto=format&fit=crop&w=900&q=85",tag:"Food & dining"},
- {name:"The Daily Basket",category:"Grocery & General",description:"Everyday pantry essentials, dry goods, and household picks in one convenient stop.",stall:"Demo · Stall B-04",image:"https://images.unsplash.com/photo-1542838132-92c53300491e?auto=format&fit=crop&w=900&q=85",tag:"Groceries"},
- {name:"Thread & Form",category:"Clothing & Apparel",description:"A curated demo selection of modest everyday clothing and practical accessories.",stall:"Demo · Stall C-02",image:"https://images.unsplash.com/photo-1483985988355-763728e1935b?auto=format&fit=crop&w=900&q=85",tag:"Apparel"},
- {name:"Harvest Corner",category:"Fresh Produce",description:"Colorful seasonal fruit and vegetables presented by a sample neighborhood produce seller.",stall:"Demo · Stall A-08",image:"https://images.unsplash.com/photo-1540420773420-3366772f4999?auto=format&fit=crop&w=900&q=85",tag:"Fresh picks"},
- {name:"Butcher's Choice",category:"Meat & Poultry",description:"A demonstration listing for a fresh-protein retailer. Product and certification details require verification.",stall:"Demo · Stall B-11",image:"https://images.unsplash.com/photo-1607623814075-e51df1bdc82f?auto=format&fit=crop&w=900&q=85",tag:"Market essentials"},
- {name:"Homeground Finds",category:"Household & Retail",description:"Useful home basics, kitchenware, and small everyday finds for the neighborhood.",stall:"Demo · Stall C-06",image:"https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=900&q=85",tag:"Home & living"}
-];
-const categories=["All","Halal Food & Dining","Grocery & General","Clothing & Apparel","Fresh Produce","Meat & Poultry","Household & Retail"];
-const nav=[["Home","home"],["About","about"],["Marketplace","marketplace"],["Vendors","vendors"],["Facilities","facilities"],["Community","community"],["Contact","contact"]];
 const fade={hidden:{opacity:0,y:22},show:{opacity:1,y:0,transition:{duration:.55,ease:[.22,1,.36,1] as const}}};
 function App(){
  const [active,setActive]=useState("All"),[query,setQuery]=useState(""),[selected,setSelected]=useState<Vendor|null>(null),[mobileOpen,setMobileOpen]=useState(false),[sent,setSent]=useState(false);
