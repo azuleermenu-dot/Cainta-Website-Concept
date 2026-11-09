@@ -1,6 +1,7 @@
 import { useMemo, useState } from "react";
+import type { FormEvent } from "react";
 import { AnimatePresence, motion } from "framer-motion";
-import { ArrowDown, ArrowRight, ArrowUpRight, Menu, X, Search, MapPin, Clock3, Store, Users, Building2, Utensils, Shirt, ShoppingBasket, Leaf, Phone, Mail, ChevronRight, CheckCircle2, Send, Sparkles } from "lucide-react";
+import { ArrowRight, ArrowUpRight, Menu, X, Search, MapPin, Store, Users, Mail, CheckCircle2, Send, Sparkles } from "lucide-react";
 
 type Vendor = { name:string; category:string; description:string; stall:string; image:string; tag:string };
 const vendors:Vendor[] = [
@@ -18,7 +19,7 @@ function App(){
  const [active,setActive]=useState("All"),[query,setQuery]=useState(""),[selected,setSelected]=useState<Vendor|null>(null),[mobileOpen,setMobileOpen]=useState(false),[sent,setSent]=useState(false);
  const filtered=useMemo(()=>vendors.filter(v=>(active==="All"||v.category===active)&&[v.name,v.category,v.description].join(" ").toLowerCase().includes(query.toLowerCase())),[active,query]);
  const go=(id:string)=>{document.getElementById(id)?.scrollIntoView({behavior:"smooth"});setMobileOpen(false)};
- const submit=(e:React.FormEvent<HTMLFormElement>)=>{e.preventDefault();setSent(true)};
+ const submit=(e:FormEvent<HTMLFormElement>)=>{e.preventDefault();setSent(true)};
  return <div>
   <div className="announcement"><span>AN ONLINE CONCEPT FOR COMMUNITY DISCOVERY</span><span>EMD CAINTA · BBMC MUSLIM COMMUNITY</span></div>
   <header className="header"><a className="brand" href="#home" onClick={e=>{e.preventDefault();go("home")}}><span className="brand-mark">E</span><span><b>EMD CAINTA</b><small>MARKET & TRADING CENTER</small></span></a>
