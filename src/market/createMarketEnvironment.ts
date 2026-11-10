@@ -154,7 +154,7 @@ function addRoofCompletion(THREE: Three, parent: Three, materials: Three) {
 
 function addCrate(THREE: Three, parent: Three, x: number, y: number, z: number, material: Three) {
   // Compact open-top display bin represented as one low-poly crate shell.
-  addBox(THREE, parent, [0.72, 0.22, 0.48], [x, y + 0.11, z], material);
+  addBox(THREE, parent, [0.72, 0.22, 0.48], [x, y + 0.11, z], material, false);
 }
 
 function addStall(
@@ -205,7 +205,14 @@ function addStall(
   crateXs.forEach((cx, crateIndex) => {
     const crateZ = displayZ + (crateIndex % 2 === 0 ? -side * 0.05 : side * 0.05);
     addCrate(THREE, group, cx, 1.62, crateZ, crateMat);
-    const type = ["red", "orange", "green", "yellow", "leafy"][((index + crateIndex) % 5)];
+    const productClass = category.includes("SEAFOOD")
+      ? "seafood"
+      : category.includes("MEAT")
+        ? "meat"
+        : category.includes("DRY") || category.includes("GROCERY")
+          ? "dry"
+          : "";
+    const type = productClass || ["red", "orange", "green", "yellow", "leafy"][((index + crateIndex) % 5)];
     const positions = fruitTransforms[type] || (fruitTransforms[type] = []);
     for (let j = 0; j < 9; j += 1) {
       const col = j % 3;
@@ -217,7 +224,13 @@ function addStall(
       const py = 1.91 + ((j + crateIndex) % 3) * 0.045;
       const scale: [number, number, number] = type === "leafy"
         ? [0.12, 0.13, 0.16]
-        : [0.115 + (j % 2) * 0.012, 0.12, 0.115 + (j % 3) * 0.008];
+        : type === "seafood"
+          ? [0.22, 0.075, 0.095]
+          : type === "meat"
+            ? [0.16, 0.105, 0.145]
+            : type === "dry"
+              ? [0.13, 0.17, 0.11]
+              : [0.115 + (j % 2) * 0.012, 0.12, 0.115 + (j % 3) * 0.008];
       positions.push({ p: [px, py, pz], s: scale });
     }
   });
@@ -234,7 +247,10 @@ function addInstancedProduce(THREE: Three, parent: Three, transforms: Record<str
     orange: materials.produceOrange,
     green: materials.produceGreen,
     yellow: materials.produceYellow,
-    leafy: materials.produceLeafy
+    leafy: materials.produceLeafy,
+    seafood: materials.produceSeafood,
+    meat: materials.produceMeat,
+    dry: materials.produceDryGoods
   };
   Object.entries(transforms).forEach(([type, entries]) => {
     const mesh = new THREE.InstancedMesh(geometry, palette[type], entries.length);
@@ -247,7 +263,7 @@ function addInstancedProduce(THREE: Three, parent: Three, transforms: Record<str
       mesh.setMatrixAt(i, dummy.matrix);
     });
     mesh.instanceMatrix.needsUpdate = true;
-    mesh.castShadow = true;
+    mesh.castShadow = false;
     mesh.receiveShadow = true;
     parent.add(mesh);
   });
@@ -355,6 +371,9 @@ export function buildMarketEnvironment(THREE: Three, scene: Three) {
     produceGreen: standardMaterial(THREE, "#648849", 0.86),
     produceYellow: standardMaterial(THREE, "#d6b64f", 0.82),
     produceLeafy: standardMaterial(THREE, "#4b7444", 0.94),
+    produceSeafood: standardMaterial(THREE, "#a8b8ba", 0.42, 0.12),
+    produceMeat: standardMaterial(THREE, "#aa5e54", 0.78),
+    produceDryGoods: standardMaterial(THREE, "#c0a06a", 0.9),
     lightFixture: new THREE.MeshStandardMaterial({ color: "#f8eed9", emissive: "#ffdda1", emissiveIntensity: 1.0, roughness: 0.4 }),
     siteGround: standardMaterial(THREE, "#aaa99f", 0.96),
     sidewalk: standardMaterial(THREE, "#c2bfb5", 0.92),
