@@ -43,24 +43,24 @@ function addBeam(
 
 function makeLabelTexture(THREE: Three, title: string, subtitle?: string) {
   const canvas = document.createElement("canvas");
-  canvas.width = 1024;
-  canvas.height = 256;
+  canvas.width = 512;
+  canvas.height = 128;
   const ctx = canvas.getContext("2d");
   if (!ctx) return null;
   ctx.fillStyle = "#173c31";
   ctx.fillRect(0, 0, canvas.width, canvas.height);
   ctx.fillStyle = "#c59d57";
-  ctx.fillRect(0, 0, canvas.width, 12);
-  ctx.fillRect(0, canvas.height - 12, canvas.width, 12);
+  ctx.fillRect(0, 0, canvas.width, 6);
+  ctx.fillRect(0, canvas.height - 6, canvas.width, 6);
   ctx.fillStyle = "#f4eee0";
   ctx.textAlign = "center";
   ctx.textBaseline = "middle";
-  ctx.font = "700 78px Arial, sans-serif";
-  ctx.fillText(title, canvas.width / 2, subtitle ? 112 : 130);
+  ctx.font = "700 39px Arial, sans-serif";
+  ctx.fillText(title, canvas.width / 2, subtitle ? 56 : 65);
   if (subtitle) {
     ctx.fillStyle = "#c8d5c9";
-    ctx.font = "500 28px Arial, sans-serif";
-    ctx.fillText(subtitle, canvas.width / 2, 185);
+    ctx.font = "500 14px Arial, sans-serif";
+    ctx.fillText(subtitle, canvas.width / 2, 94);
   }
   const texture = new THREE.CanvasTexture(canvas);
   texture.colorSpace = THREE.SRGBColorSpace;
@@ -138,14 +138,8 @@ function addRoofCompletion(THREE: Three, parent: Three, materials: Three) {
 }
 
 function addCrate(THREE: Three, parent: Three, x: number, y: number, z: number, material: Three) {
-  const w = 0.72;
-  const d = 0.48;
-  const h = 0.28;
-  addBox(THREE, parent, [w, 0.055, d], [x, y, z], material);
-  addBox(THREE, parent, [w, 0.055, 0.045], [x, y + h / 2, z - d / 2], material);
-  addBox(THREE, parent, [w, 0.055, 0.045], [x, y + h / 2, z + d / 2], material);
-  addBox(THREE, parent, [0.045, 0.055, d], [x - w / 2, y + h / 2, z], material);
-  addBox(THREE, parent, [0.045, 0.055, d], [x + w / 2, y + h / 2, z], material);
+  // Compact open-top display bin represented as one low-poly crate shell.
+  addBox(THREE, parent, [0.72, 0.22, 0.48], [x, y + 0.11, z], material);
 }
 
 function addStall(
@@ -205,7 +199,7 @@ function addStall(
       const jitterZ = ((j * 11 + index * 5) % 7 - 3) * 0.018;
       const px = x + cx + (col - 1) * 0.19 + jitterX;
       const pz = z + crateZ + (row - 1) * 0.12 + jitterZ;
-      const py = 1.86 + ((j + crateIndex) % 3) * 0.045;
+      const py = 1.91 + ((j + crateIndex) % 3) * 0.045;
       const scale: [number, number, number] = type === "leafy"
         ? [0.12, 0.13, 0.16]
         : [0.115 + (j % 2) * 0.012, 0.12, 0.115 + (j % 3) * 0.008];
@@ -300,16 +294,18 @@ function addInteriorLights(THREE: Three, parent: Three, materials: Three) {
     for (const z of [-8.2, 0, 8.2]) {
       const fixture = addBox(THREE, parent, [2.0, 0.07, 0.24], [x, 6.25, z], materials.lightFixture, false);
       fixture.material = materials.lightFixture;
-      const light = new THREE.PointLight(0xffe2b5, 0.62, 10, 2);
-      light.position.set(x, 6.05, z);
-      parent.add(light);
+      if (z === 0 && x % 12 === 0) {
+        const light = new THREE.PointLight(0xffe2b5, 0.58, 13, 2);
+        light.position.set(x, 6.05, z);
+        parent.add(light);
+      }
     }
   }
 }
 
 function addSiteContext(THREE: Three, parent: Three, materials: Three) {
   // Neutral paved forecourt and road context, deliberately not a surveyed site plan.
-  addBox(THREE, parent, [110, 0.28, 100], [0, -0.32, 0], materials.siteGround, false);
+  addBox(THREE, parent, [110, 0.28, 100], [0, -0.27, 0], materials.siteGround, false);
   addBox(THREE, parent, [92, 0.14, 6.5], [0, -0.13, 20.7], materials.sidewalk, false);
   addBox(THREE, parent, [100, 0.16, 11], [0, -0.17, 29.6], materials.asphalt, false);
   addBox(THREE, parent, [100, 0.18, 0.24], [0, -0.045, 24.1], materials.curb, false);
