@@ -12,7 +12,8 @@
     "framer-motion": "^12.23.24",
     "lucide-react": "^0.468.0",
     "react": "^19.0.0",
-    "react-dom": "^19.0.0"
+    "react-dom": "^19.0.0",
+    "@google/model-viewer": "^4.1.0"
   },
   "devDependencies": {
     "@types/react": "^19.0.0",
