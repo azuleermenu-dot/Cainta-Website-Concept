@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { createElement, useEffect, useRef, useState } from "react";
 import { ArrowDown, Expand, RotateCcw, ZoomIn, ZoomOut, Box } from "lucide-react";
 
 type ModelViewerElement = HTMLElement & {
@@ -50,24 +50,23 @@ export default function MarketExperience() {
       <div className="experience-stage">
         <div className="stage-topline"><span><Box size={15}/> CAINTA MARKET · 3D VIEW</span><span>CONCEPT MODEL</span></div>
         <div className="model-frame">
-          <model-viewer
-            ref={viewerRef as React.RefObject<any>}
-            src="/models/cainta-market-web.glb"
-            alt="Interactive 3D model of Cainta Market"
-            camera-controls
-            touch-action="pan-y"
-            interaction-prompt="auto"
-            shadow-intensity="0.8"
-            exposure="1"
-            environment-image="neutral"
-            camera-orbit="35deg 68deg auto"
-            min-camera-orbit="auto 10deg 2m"
-            max-camera-orbit="auto 120deg 120m"
-            loading="lazy"
-            onLoad={() => setModelReady(true)}
-            onError={() => setModelFailed(true)}
-          />
-          {(!modelReady || modelFailed) && (
+          {createElement("model-viewer" as any, {
+            ref: viewerRef,
+            src: "/models/cainta-market-web.glb",
+            alt: "Interactive 3D model of Cainta Market",
+            "camera-controls": true,
+            "touch-action": "pan-y",
+            "interaction-prompt": "auto",
+            "shadow-intensity": "0.8",
+            exposure: "1",
+            "environment-image": "neutral",
+            "camera-orbit": "35deg 68deg auto",
+            "min-camera-orbit": "auto 10deg 2m",
+            "max-camera-orbit": "auto 120deg 120m",
+            loading: "lazy",
+            onLoad: () => setModelReady(true),
+            onError: () => setModelFailed(true),
+          })}          {(!modelReady || modelFailed) && (
             <div className="model-placeholder">
               <div className="placeholder-icon"><Box size={27}/></div>
               <b>{modelFailed ? "3D model file not found" : "Your market model is ready to be connected"}</b>
