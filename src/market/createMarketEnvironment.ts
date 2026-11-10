@@ -350,10 +350,9 @@ export function buildMarketEnvironment(THREE: Three, scene: Three) {
     asphalt: standardMaterial(THREE, "#454b4d", 0.98),
     curb: standardMaterial(THREE, "#d0c7b8", 0.88),
     roadMarking: standardMaterial(THREE, "#e9e4d2", 0.78),
-    pavementJoint: standardMaterial(THREE, "#888b84", 0.98)
+    pavementJoint: standardMaterial(THREE, "#888b84", 0.98),
+    mainSign: makeLabelTexture(THREE, "CAINTA MARKET", "PUBLIC MARKET")
   };
-
-  materials.mainSign = makeLabelTexture(THREE, "CAINTA MARKET", "PUBLIC MARKET");
   addSiteContext(THREE, group, materials);
   addRoofCompletion(THREE, group, materials);
   addFrontMarketSign(THREE, group, materials);
