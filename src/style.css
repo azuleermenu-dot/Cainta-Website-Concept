@@ -31,30 +31,65 @@
 @media(max-width:760px){.back-top-float{right:14px;bottom:72px;width:39px;height:39px}}
 
 
-/* Interactive 3D market experience */
-.market-experience{display:grid;grid-template-columns:.72fr 1.28fr;gap:7%;align-items:center;padding:105px 9%;background:#f8f7f2;color:#173b2c}
-.experience-kicker{font-size:9px;letter-spacing:2px;font-weight:700;color:#9a7d4d}
-.experience-copy h2{font:600 clamp(38px,4.1vw,56px)/1.12 "Playfair Display",serif;letter-spacing:-1px;margin:20px 0;color:#123c2d}
-.experience-copy h2 em{color:#b18f55}
-.experience-copy>p{font-size:13px;line-height:1.9;color:#737b73;max-width:390px}
-.experience-status{display:flex;align-items:center;gap:9px;margin-top:27px;font-size:10px;color:#68756b}
-.status-dot{width:7px;height:7px;border-radius:50%;background:#c49b55}.status-dot.ready{background:#32845b}
-.experience-link{display:inline-flex;align-items:center;gap:12px;margin-top:26px;padding-bottom:7px;border-bottom:1px solid #c6a66a;text-decoration:none;color:#123c2d;font-size:11px;font-weight:700}
-.experience-stage{min-width:0;border:1px solid #e1e1d8;background:#eeeee7;padding:15px}
-.stage-topline{display:flex;justify-content:space-between;align-items:center;padding:4px 4px 13px;font-size:8px;letter-spacing:1.2px;color:#68756b}
-.stage-topline span:first-child{display:flex;align-items:center;gap:8px;color:#173b2c}
-.model-frame{height:430px;position:relative;background:radial-gradient(ellipse at 50% 44%,#fff 0%,#e9e9df 65%,#dedfd5 100%);overflow:hidden}
-.model-frame model-viewer{width:100%;height:100%;--poster-color:transparent;background:transparent}
-.model-placeholder{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:25px;pointer-events:none;background:linear-gradient(135deg,#f6f5efdd,#e7e8dfdd)}
-.placeholder-icon{width:58px;height:58px;border:1px solid #c6a66a;color:#a18452;display:grid;place-items:center;margin-bottom:18px}
-.model-placeholder b{font:600 21px "Playfair Display",serif;color:#173b2c}
-.model-placeholder p{max-width:410px;font-size:11px;line-height:1.8;color:#6e786e}
-.model-placeholder code{font-size:10px;background:#e2e3d9;padding:2px 4px}
-.model-placeholder>span{font-size:9px;color:#9a7d4d;letter-spacing:.5px}
-.model-toolbar{display:flex;align-items:center;gap:7px;flex-wrap:wrap;padding:12px 0 2px}
-.model-toolbar button{border:1px solid #d5d7cc;background:#f8f7f2;color:#31513e;padding:8px 11px;font-size:9px;display:inline-flex;align-items:center;gap:6px}
-.model-toolbar button:hover{background:#123c2d;color:#fff}
-.toolbar-spacer{flex:1}
-.model-hint{display:flex;align-items:center;justify-content:center;gap:7px;margin:12px 0 0;font-size:9px;color:#81887e}
-@media(max-width:900px){.market-experience{grid-template-columns:1fr;gap:35px;padding:80px 6%}.experience-copy>p{max-width:560px}}
-@media(max-width:600px){.market-experience{padding:68px 6%}.model-frame{height:330px}.experience-copy h2{font-size:42px}.model-toolbar{gap:5px}.model-toolbar button{padding:8px}.model-hint{font-size:8px;flex-wrap:wrap}}
+/* Dedicated, gated 3D architectural experience page */
+.experience-page{min-height:100vh;background:#0b2018;color:#eef2eb;display:flex;flex-direction:column;overflow:hidden}
+.experience-header{height:78px;flex:0 0 78px;padding:0 5.2%;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid #294437;background:#0d241b}
+.experience-brand{display:flex;align-items:center;gap:12px;text-decoration:none;color:#f4f2e9}
+.experience-brand-mark{width:38px;height:38px;border:1px solid #c6a66a;color:#c6a66a;display:grid;place-items:center;font:600 24px "Playfair Display",serif}
+.experience-brand b,.experience-brand small{display:block}
+.experience-brand b{font-size:11px;letter-spacing:1.7px}
+.experience-brand small{font-size:8px;letter-spacing:1.25px;margin-top:4px;color:#9eaea1}
+.experience-header-label{display:flex;align-items:center;gap:10px;font-size:8px;letter-spacing:1.8px;color:#91a297}
+.experience-header-label span{width:6px;height:6px;border-radius:50%;background:#c6a66a;box-shadow:0 0 10px #c6a66a88}
+.experience-back{display:inline-flex;align-items:center;gap:10px;background:transparent;border:1px solid #536b5b;padding:11px 14px;color:#e6ece5;font-size:10px;transition:background .2s,border-color .2s}
+.experience-back:hover{background:#1b3a2c;border-color:#c6a66a}
+.experience-layout{width:100%;max-width:1680px;margin:0 auto;padding:clamp(34px,5vh,65px) 5.2% 36px;display:grid;grid-template-columns:minmax(250px,.66fr) minmax(0,1.7fr);gap:4.5%;align-items:center;flex:1}
+.experience-intro{padding:12px 0}
+.experience-kicker{font-size:8px;letter-spacing:2px;font-weight:700;color:#c6a66a}
+.experience-intro h1{font:600 clamp(39px,4.25vw,62px)/1.08 "Playfair Display",serif;letter-spacing:-1.7px;margin:22px 0;color:#f2f0e7}
+.experience-intro h1 em{font-weight:500;color:#c6a66a}
+.experience-description{max-width:390px;font-size:12px;line-height:1.9;color:#aebdb0}
+.experience-guide{display:grid;gap:17px;margin-top:34px;padding-top:23px;border-top:1px solid #294437}
+.experience-guide>div{display:flex;align-items:center;gap:13px}
+.experience-guide>div>span{width:29px;height:29px;border:1px solid #526858;display:grid;place-items:center;font-size:9px;color:#c6a66a;flex:0 0 29px}
+.experience-guide p{display:grid;gap:4px;margin:0}
+.experience-guide b{font-size:10px;font-weight:600;color:#e7ece5}
+.experience-guide small{font-size:9px;color:#8fa093}
+.experience-disclaimer{display:flex;align-items:flex-start;gap:11px;margin-top:32px;padding:14px 13px;background:#122c21;border:1px solid #294437}
+.experience-status-dot{width:7px;height:7px;border-radius:50%;background:#c6a66a;margin-top:3px;flex:0 0 7px}
+.experience-status-dot.is-ready{background:#70bd87;box-shadow:0 0 9px #70bd8780}
+.experience-disclaimer>div{display:grid;gap:5px}
+.experience-disclaimer b{font-size:8px;letter-spacing:1px;color:#d9c18e}
+.experience-disclaimer small{font-size:9px;line-height:1.6;color:#8fa093}
+.experience-workspace{min-width:0;background:#122b20;border:1px solid #365042;padding:15px;box-shadow:0 22px 70px #0003}
+.workspace-heading{display:flex;justify-content:space-between;align-items:center;padding:3px 3px 14px}
+.workspace-heading>div{display:grid;gap:5px}
+.workspace-heading>div span{font-size:7px;letter-spacing:1.5px;color:#c6a66a}
+.workspace-heading>div b{font:500 17px "Playfair Display",serif;color:#f0f0e8}
+.workspace-index{font-size:7px;letter-spacing:1.3px;color:#87988b}
+.experience-stage{height:clamp(390px,61vh,690px);position:relative;overflow:hidden;background:radial-gradient(ellipse at 50% 42%,#e6e7dc 0%,#d5d8cc 62%,#bfc6b9 100%);isolation:isolate}
+.experience-stage model-viewer{display:block;width:100%;height:100%;background:transparent;--poster-color:transparent;outline:none}
+.experience-model-placeholder{position:absolute;inset:0;display:grid;place-items:center;text-align:center;overflow:hidden;background:linear-gradient(140deg,#e8e9deee,#d9ddd2ee);pointer-events:none}
+.experience-placeholder-grid{position:absolute;inset:-20%;opacity:.38;background-image:linear-gradient(#8d9b8c2b 1px,transparent 1px),linear-gradient(90deg,#8d9b8c2b 1px,transparent 1px);background-size:42px 42px;transform:perspective(500px) rotateX(58deg) scale(1.2);transform-origin:center 65%}
+.experience-placeholder-content{position:relative;z-index:1;max-width:520px;padding:32px 25px;color:#183c2d}
+.experience-placeholder-icon{width:62px;height:62px;border:1px solid #b89a63;color:#a48650;display:grid;place-items:center;margin:0 auto 18px;background:#f1f1e8bb}
+.experience-placeholder-label{font-size:7px;letter-spacing:2px;color:#927749;font-weight:700}
+.experience-placeholder-content h2{font:600 clamp(24px,2.3vw,34px)/1.18 "Playfair Display",serif;margin:13px 0 9px;color:#173a2b}
+.experience-placeholder-content p{max-width:440px;margin:0 auto;font-size:10px;line-height:1.8;color:#617264}
+.experience-placeholder-content code{font-size:9px;color:#254b36;background:#d4dbcf;padding:2px 4px;overflow-wrap:anywhere}
+.experience-placeholder-foot{display:block;margin-top:19px;font-size:7px;letter-spacing:1.3px;color:#987b4a}
+.experience-controlbar{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:13px 0 3px}
+.experience-view-presets,.experience-utility-controls{display:flex;align-items:center;gap:7px}
+.experience-controlbar button{height:34px;min-width:43px;display:inline-flex;align-items:center;justify-content:center;padding:0 12px;background:#183629;border:1px solid #47604e;color:#dfe8df;font-size:9px;transition:background .2s,border-color .2s}
+.experience-controlbar button:hover:not(:disabled){background:#c6a66a;color:#14291d;border-color:#c6a66a}
+.experience-controlbar button:disabled{opacity:.35;cursor:not-allowed}
+.experience-workspace-foot{display:flex;justify-content:space-between;gap:14px;padding:10px 2px 1px;color:#819387;font-size:8px;letter-spacing:.4px}
+.experience-workspace-foot span{display:flex;align-items:center;gap:6px}
+.experience-footer{display:flex;justify-content:space-between;gap:15px;padding:17px 5.2%;border-top:1px solid #294437;color:#718578;font-size:7px;letter-spacing:1.2px}
+.experience-stage:fullscreen{width:100vw;height:100vh;background:#d5d8cc}
+.experience-stage:fullscreen model-viewer{height:100vh}
+.route-loading{min-height:100vh;display:grid;place-items:center;background:#0b2018;color:#d8dfd7;font:12px "DM Sans",sans-serif;letter-spacing:1px}
+@media(max-width:1050px){.experience-layout{grid-template-columns:minmax(220px,.62fr) minmax(0,1.38fr);gap:3.2%}.experience-intro h1{font-size:clamp(36px,4.5vw,50px)}.experience-guide{gap:13px}.experience-stage{height:54vh;min-height:360px}.experience-workspace-foot{font-size:7px}}
+@media(max-width:760px){.experience-page{overflow:visible}.experience-header{height:68px;flex-basis:68px;padding:0 5%}.experience-brand-mark{width:34px;height:34px}.experience-header-label{display:none}.experience-back{padding:10px 11px;font-size:9px}.experience-layout{display:flex;flex-direction:column;align-items:stretch;gap:25px;padding:35px 5% 28px}.experience-intro{padding:0}.experience-intro h1{font-size:clamp(39px,9vw,52px);margin:15px 0}.experience-description{max-width:600px;font-size:11px}.experience-guide{grid-template-columns:repeat(3,minmax(0,1fr));gap:9px;margin-top:22px;padding-top:17px}.experience-guide>div{align-items:flex-start;gap:8px}.experience-guide>div>span{width:25px;height:25px;flex-basis:25px}.experience-guide b{font-size:9px}.experience-guide small{font-size:8px;line-height:1.5}.experience-disclaimer{margin-top:18px;padding:11px}.experience-workspace{padding:11px}.workspace-heading>div b{font-size:15px}.experience-stage{height:54vh;min-height:350px;max-height:570px}.experience-controlbar{flex-wrap:wrap}.experience-view-presets{flex:1;flex-wrap:wrap}.experience-controlbar button{padding:0 10px}.experience-workspace-foot{flex-direction:column;gap:7px}.experience-footer{padding:14px 5%;font-size:6px;line-height:1.6}}
+@media(max-width:420px){.experience-back span{display:none}.experience-back{width:38px;height:38px;justify-content:center;padding:0}.experience-guide{grid-template-columns:1fr;gap:10px}.experience-guide>div{align-items:center}.experience-stage{height:48vh;min-height:300px}.experience-placeholder-content{padding:20px 17px}.experience-controlbar{gap:8px}.experience-view-presets{gap:5px}.experience-controlbar button{min-width:38px;padding:0 8px;font-size:8px}.workspace-index{font-size:6px}}
+@media(prefers-reduced-motion:reduce){.experience-controlbar button,.experience-back{transition:none}}
