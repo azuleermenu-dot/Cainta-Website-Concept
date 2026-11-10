@@ -15,12 +15,12 @@ type ViewDefinition = {
 
 const VIEWS: Record<ViewKey, ViewDefinition> = {
   front: { label: "Front exterior", position: [0, 17, 59], target: [0, 3.8, 0], fov: 42 },
-  entrance: { label: "Main entrance", position: [0, 8, 32], target: [0, 3.4, 10], fov: 40 },
+  entrance: { label: "Main entrance", position: [-25, 8, 27], target: [-28, 3.5, 4], fov: 38 },
   left: { label: "Left exterior", position: [-54, 17, -1], target: [-2, 4, -2], fov: 43 },
   right: { label: "Right exterior", position: [54, 17, -1], target: [2, 4, -2], fov: 43 },
   rear: { label: "Rear exterior", position: [0, 16, -54], target: [0, 3.8, -5], fov: 43 },
   interior: { label: "Main market hall", position: [28, 4.1, 0], target: [-25, 3.4, 0], fov: 47 },
-  stalls: { label: "Vendor stalls", position: [8, 3.0, 6.6], target: [8, 2.0, 9.3], fov: 39 },
+  stalls: { label: "Vendor stalls", position: [6, 3.0, 6.5], target: [6, 2.0, 8.9], fov: 39 },
   aisle: { label: "Central aisle", position: [0, 5.2, 23], target: [0, 3.0, -15], fov: 48 },
   roof: { label: "Roof structure", position: [0, 43, 23], target: [0, 2.0, -3], fov: 44 },
   aerial: { label: "Aerial overview", position: [0, 78, 41], target: [0, 0, -1], fov: 47 }
