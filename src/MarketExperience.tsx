@@ -58,7 +58,9 @@ export default function MarketExperience({ onBack }: { onBack: () => void }) {
         scene.background = new THREE.Color("#cbd5d1");
         scene.fog = new THREE.Fog("#cbd5d1", 95, 180);
 
-        const camera = new THREE.PerspectiveCamera(42, 1, 0.1, 320);
+        const camera = new THREE.PerspectiveCamera(VIEWS.front.fov, 1, 0.1, 320);
+        camera.position.set(...VIEWS.front.position);
+        camera.lookAt(...VIEWS.front.target);
         const webgl = new THREE.WebGLRenderer({
           canvas,
           antialias: true,
@@ -218,9 +220,21 @@ export default function MarketExperience({ onBack }: { onBack: () => void }) {
       disposed = true;
       resizeObserver?.disconnect();
       if (animationRef.current !== null) cancelAnimationFrame(animationRef.current);
-      sceneApi.current?.dispose();
-      sceneApi.current = null;
-      if (!sceneApi.current) renderer?.dispose?.();
+      if (sceneApi.current) {
+        const dispose = sceneApi.current.dispose;
+        sceneApi.current = null;
+        dispose();
+      } else {
+        environment?.dispose?.();
+        loadedModel?.traverse?.((node: any) => {
+          node.geometry?.dispose?.();
+          if (node.material) {
+            const materials = Array.isArray(node.material) ? node.material : [node.material];
+            materials.forEach((material: any) => material.dispose?.());
+          }
+        });
+        renderer?.dispose?.();
+      }
     };
   }, []);
 
