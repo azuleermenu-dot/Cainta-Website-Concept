@@ -361,11 +361,11 @@ export function buildMarketEnvironment(THREE: Three, scene: Three) {
   const xPositions = [-24, -18, -12, -6, 0, 6, 12, 18, 24];
   let stallIndex = 0;
   xPositions.forEach((x) => {
-    addStall(THREE, group, x, -9.5, -1, stallIndex, MARKET_CATEGORIES[stallIndex % MARKET_CATEGORIES.length], materials, fruitTransforms);
-    stallIndex += 1;
     if (x !== 24) {
-      addStall(THREE, group, x, 9.5, 1, stallIndex, MARKET_CATEGORIES[stallIndex % MARKET_CATEGORIES.length], materials, fruitTransforms);
+      addStall(THREE, group, x, -9.5, -1, stallIndex, MARKET_CATEGORIES[stallIndex % MARKET_CATEGORIES.length], materials, fruitTransforms);
     }
+    stallIndex += 1;
+    addStall(THREE, group, x, 9.5, 1, stallIndex, MARKET_CATEGORIES[stallIndex % MARKET_CATEGORIES.length], materials, fruitTransforms);
     stallIndex += 1;
   });
   addInstancedProduce(THREE, group, fruitTransforms, materials);
