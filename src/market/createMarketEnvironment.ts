@@ -126,15 +126,30 @@ function addRoofCompletion(THREE: Three, parent: Three, materials: Three) {
   const ribMaterial = new THREE.MeshStandardMaterial({
     color: "#788187", roughness: 0.58, metalness: 0.58
   });
+  const ribCount = 82;
+  const ribs = new THREE.InstancedMesh(
+    new THREE.BoxGeometry(61, 0.035, 0.045),
+    ribMaterial,
+    ribCount
+  );
+  const ribTransform = new THREE.Object3D();
+  let ribIndex = 0;
   for (let i = 1; i < 42; i += 1) {
     const t = i / 42;
     const zBack = -3.25 - 14 * t;
     const yBack = 8.5 - 2.5 * t;
     const zFront = -3.25 + 14 * t;
     const yFront = 8.5 - 2.5 * t;
-    addBeam(THREE, parent, [-30.45, yBack + 0.025, zBack], [30.45, yBack + 0.025, zBack], 0.035, 0.035, ribMaterial);
-    addBeam(THREE, parent, [-30.45, yFront + 0.025, zFront], [30.45, yFront + 0.025, zFront], 0.035, 0.035, ribMaterial);
+    [[yBack + 0.025, zBack], [yFront + 0.025, zFront]].forEach(([y, z]) => {
+      ribTransform.position.set(0, y, z);
+      ribTransform.updateMatrix();
+      ribs.setMatrixAt(ribIndex, ribTransform.matrix);
+      ribIndex += 1;
+    });
   }
+  ribs.instanceMatrix.needsUpdate = true;
+  ribs.receiveShadow = true;
+  parent.add(ribs);
 }
 
 function addCrate(THREE: Three, parent: Three, x: number, y: number, z: number, material: Three) {
