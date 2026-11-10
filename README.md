@@ -49,3 +49,18 @@ The contact form only validates in the browser. **It does not send or store pers
 ## Images
 
 The current concept uses remote Unsplash stock photography for visual demonstration and requires an internet connection. Replace stock imagery with approved market-specific photographs before an official launch.
+
+
+## Interactive 3D market experience
+
+The homepage includes a responsive 3D model-viewer section with front, side, rear, and isometric camera presets, orbit controls, touch support, and fullscreen mode.
+
+### Add the approved market model
+
+The binary GLB is intentionally not fabricated or replaced with a generic model. Add the approved, web-optimized model at:
+
+`public/models/cainta-market-web.glb`
+
+The viewer currently displays a clear asset-pending state until that file exists. Before publishing the model, confirm its source, scale, orientation, and permission to publish. The existing source model's approximate 60 × 28 footprint conflicts with the reference board's illustrative 36 × 24 dimensions; do not scale it to force a match.
+
+The current website listings remain fictional demonstration data and must be replaced with owner-approved vendor information before being presented as a live directory.

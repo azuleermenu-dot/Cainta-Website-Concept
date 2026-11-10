@@ -1,0 +1,6 @@
+{
+  "rewrites": [
+    { "source": "/explore-3d", "destination": "/index.html" },
+    { "source": "/explore-3d/", "destination": "/index.html" }
+  ]
+}
