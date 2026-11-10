@@ -1,51 +1,32 @@
-# EMD Cainta Market & Trading Center — Website Concept
+# 3D Marketplace Demo Concept
 
-A responsive, interactive website concept for **EMD Cainta Market & Trading Center** and the **BBMC Muslim Community**.
+An independent, fictional marketplace visualization built to demonstrate immersive 3D navigation and a responsive directory experience.
 
 ## Stack
-
 - React 19 + Vite + TypeScript
+- Three.js + OrbitControls
 - Framer Motion
 - Lucide React
-- Custom responsive CSS
+- Responsive CSS
 
 ## Run locally
+- Install dependencies with `npm install`.
+- Start the development server with `npm run dev`.
+- Create a production build with `npm run build`.
+- Inspect the build locally with `npm run preview`.
 
-```bash
-npm install
-npm run dev
-```
+## Experience
+- Procedurally generated 3D marketplace environment (not a static hero image).
+- Orbit, zoom, and pan controls for mouse and touch.
+- Three camera modes: 3D, top-down, and street-level.
+- Selectable marketplace zone markers with animated camera focus.
+- Guided virtual tour.
+- Compact overview map.
+- Searchable, filterable directory containing fictional demo stalls.
+- Responsive glassmorphism navigation and mobile menu.
+- Reduced render quality on smaller screens.
 
-Create and verify a production build with:
+## Fictional demonstration notice
+This repository is a fictional website demo concept. It does not represent, identify, or claim affiliation with any real marketplace, business, owner, organization, or community. All marketplace zones, vendor names, stall details, and descriptive content are illustrative placeholders. The 3D environment is a procedural architectural visualization and is not a survey or an accurate representation of a real site.
 
-```bash
-npm run build
-npm run preview
-```
-
-## What is included
-
-- Editorial-style homepage and responsive navigation
-- About section with proposed mission/vision copy clearly marked for review
-- Marketplace categories and a searchable vendor directory
-- Eight fictional demonstration vendor profiles with detail dialogs
-- Facility showcase using concept imagery and clear verification disclaimers
-- Community announcement examples for entrepreneurship, events, and cultural activities
-- Contact form with browser-side validation and a local confirmation state
-- Map preview placeholder awaiting an approved address and map pin
-- Smooth section navigation, lazy-loaded imagery, reduced-motion support, and back-to-top control
-- SEO title, description, and Open Graph metadata
-
-## Authenticity and content safety
-
-This repository contains an **independent website concept**, not an official organizational website. It is not represented as operated or endorsed by BBMC.
-
-Vendor names, profiles, product examples, images, facilities, and community updates are fictional demonstration content. Stall references, hours, contacts, addresses, leadership, organizational history, statistics, achievements, and official statements have not been supplied or verified. Proposed mission and vision text is editorial placeholder copy, not an official BBMC statement.
-
-Before any public or official launch, have authorized representatives approve the organizational copy and supply verified details. Obtain permission for vendor listings and photographs. Confirm the physical address, operating hours, facilities, parking/accessibility information, and official contact channels.
-
-The contact form only validates in the browser. **It does not send or store personal information.** A production form requires an approved recipient, a privacy notice, spam protection, and secure backend handling.
-
-## Images
-
-The current concept uses remote Unsplash stock photography for visual demonstration and requires an internet connection. Replace stock imagery with approved market-specific photographs before an official launch.
+Before adapting the concept for a real client, replace demo text with details approved by authorized representatives and obtain permission for any real business names, logos, images, maps, or vendor listings.
