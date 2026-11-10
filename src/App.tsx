@@ -1,4 +1,5 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
+import type { MutableRefObject } from "react";
 import * as THREE from "three";
 import { OrbitControls } from "three/examples/jsm/controls/OrbitControls.js";
 import { AnimatePresence, motion } from "framer-motion";
@@ -71,7 +72,7 @@ function createTree(parent: THREE.Group, x: number, z: number, scale = 1) {
   parent.add(crown2);
 }
 
-function createMarket(parent: THREE.Group, activeRef: MutableRefObject<Map<SectionId, THREE.Vector3>>, markerMeshes: THREE.Object3D[]) {
+function createMarket(parent: THREE.Scene, activeRef: MutableRefObject<Map<SectionId, THREE.Vector3>>, markerMeshes: THREE.Object3D[]) {
   const market = new THREE.Group();
   parent.add(market);
 
