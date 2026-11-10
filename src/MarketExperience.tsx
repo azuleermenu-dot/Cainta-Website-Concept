@@ -27,7 +27,7 @@ export default function MarketExperience({ onBack }: { onBack: () => void }) {
     const boot = async () => {
       try {
         const THREE = await import("https://cdn.jsdelivr.net/npm/three@0.170.0/+esm");
-        const { OBJLoader } = await import("https://cdn.jsdelivr.net/npm/three@0.170.0/examples/jsm/loaders/OBJLoader.js");
+        const { OBJLoader } = await import("https://cdn.jsdelivr.net/npm/three@0.170.0/examples/jsm/loaders/OBJLoader.js/+esm");
         if (disposed || !canvasRef.current) return;
 
         const canvas = canvasRef.current;
