@@ -26,8 +26,9 @@ export default function MarketExperience({ onBack }: { onBack: () => void }) {
 
     const boot = async () => {
       try {
-        const THREE = await import("https://cdn.jsdelivr.net/npm/three@0.170.0/+esm");
-        const { OBJLoader } = await import("https://cdn.jsdelivr.net/npm/three@0.170.0/examples/jsm/loaders/OBJLoader.js/+esm");
+        const loadRemoteModule = new Function("url", "return import(url)") as (url: string) => Promise<any>;
+        const THREE = await loadRemoteModule("https://cdn.jsdelivr.net/npm/three@0.170.0/+esm");
+        const { OBJLoader } = await loadRemoteModule("https://cdn.jsdelivr.net/npm/three@0.170.0/examples/jsm/loaders/OBJLoader.js/+esm");
         if (disposed || !canvasRef.current) return;
 
         const canvas = canvasRef.current;
